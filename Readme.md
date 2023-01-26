@@ -37,3 +37,16 @@
       5. 책 1회독 완독 후 백준 온라인 저지, 삼성 sw 역량 테스트 문제집 풀기
       6. 프로그래머스 카카오 문제집 풀기
       7. 책의 2부와 3부 중심으로 주요 알고리즘 유형 복습하기
+
+
+
+
+---
+
+- 
+      - n = int(input())
+      - s = str(input())  
+- 
+      - n, m, k = list(map(int, input().split()))~~~~
+      - data = list(map(int,input().split()))
+      - data = sys.stdin.readline.rstrip()
