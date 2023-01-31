@@ -16,3 +16,17 @@ if __name__ == '__main__':
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+#################################################################
+""" 이곳은 연습장 입니다. """
+#################################################################
+
+
+s = [[1,2],[2,3]]
+s1 = [[3,4],[5,6]]
+answer = []
+
+for x,y in zip(s,s1):
+    answer += [[a+b for a,b in zip(x,y)]]
+
+print(answer)
