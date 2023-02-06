@@ -19,9 +19,6 @@ def binary(num_n, decimal):
 
 def solution(n, arr1, arr2):
     answer = []
-    list_i = []
-    list_j = []
-
     for i, j in zip(arr1, arr2):
         bin_i = binary(n, i)
         bin_j = binary(n, j)
