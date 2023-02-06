@@ -20,3 +20,20 @@ if __name__ == '__main__':
 #################################################################
 """ 이곳은 연습장 입니다. """
 #################################################################
+
+decimal = int(input())
+
+def binary(decimal):
+    binary_decimal = bin(decimal)[2:]
+    if len(bin(decimal)[2:]) < 5:
+        binary_decimal = (5-len(bin(decimal)[2:]))*"0" + binary_decimal
+    return binary_decimal
+
+print(binary(decimal))
+
+
+
+
+
+
+
