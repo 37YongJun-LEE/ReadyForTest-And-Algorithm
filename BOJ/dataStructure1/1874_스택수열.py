@@ -1,37 +1,33 @@
 import sys
-import time
+from collections import deque
 
-start_time = time.time()
-n = int(sys.stdin.readline())
-target_stack = []
+n = int(input())
+target_queue = deque()
 stack = []
-answer = []
 
 for i in range(n):
     k = int(sys.stdin.readline())
-    target_stack.append(k)
+    target_queue.append(k)
 
+answer_list = []
 count = 0
+
 for i in range(1, n+1):
-    if target_stack[count] > i:
-        stack.append(i)
-        answer.append("+")
-        continue
-    elif target_stack[count] == i:
-        stack.append(i)
-        answer.append("+")
-        try:
-            while stack[-1] == target_stack[count]:
-                stack.pop()
-                answer.append("-")
-                count += 1
-        except:
+    stack.append(i)
+    answer_list.append('+')
+    while True:
+        if len(target_queue) == 0 or len(stack) == 0:
             break
-if len(answer) == n*2:
-    for k in answer:
-        print(k)
+        if stack[-1] == target_queue[count]:
+            stack.pop()
+            target_queue.popleft()
+            answer_list.append('-')
+        else:
+            break
+
+if answer_list.count('+') != answer_list.count('-'):
+    print('NO')
 else:
-    print("NO")
+    for a in answer_list:
+        print(a)
     
-end_time = time.time()
-print(end_time-start_time)
