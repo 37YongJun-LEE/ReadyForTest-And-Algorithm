@@ -2,24 +2,13 @@ import sys
 from collections import deque
 
 n = int(input())
-NGE = deque(map(int, sys.stdin.readline().split()))
+NGE_queue = deque(map(int, sys.stdin.readline().split()))
+queue = deque()
 
-# 오른쪽 큰 수, 없으면 -1
-
-answer = []
-
-while NGE:
-    k = NGE[0]
-    NGE.popleft()
-    if len(NGE) == 0 or k >= max(NGE):
-        answer.append(-1)
-        continue
-    for i in NGE:
-        if k < i:
-            answer.append(i)
-            break
-        else:
-            continue
-
-for j in answer:
-    print(j, end=' ')
+for i in range(len(NGE_queue)):
+    if not NGE_queue:
+        break
+    queue = list(NGE[i+1:])
+    while NGE[i] < queue[0]:
+        queue.popleft()
+    print(queue[0], end=' ')
