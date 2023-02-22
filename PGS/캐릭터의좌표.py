@@ -1,6 +1,5 @@
 def solution(keyinput, board):
     arrow = ["up", "down", "left", "right"]
-
     x = 0
     y = 0
     dx = [0, 0, -1, 1]
