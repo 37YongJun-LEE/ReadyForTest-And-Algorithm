@@ -23,6 +23,9 @@ if __name__ == '__main__':
 
 
 
+
+# visited 는 필수
+
 visited = [False] * 9       # 보면 알겠지만, visited는 현재 False가 9개인 방문기록 리스트이다.
 
 graph = [               # 그래프는 노드가 1이 가장 작으므로 인덱스까지 맞추기위해서 0에 빈배열 삽입
@@ -44,20 +47,41 @@ graph = [               # 그래프는 노드가 1이 가장 작으므로 인덱
 # bfs의 기본은 뭐? 큐가 전부다
 
 from collections import deque
+
+
+# def bfs():
 def bfs(graph, start, visited):
+    visited[start] == True
     queue = deque([start])
-    visited[start] = True
 
     while queue:
         v = queue.popleft()
-        print(v, end=' ')
-
+        # 해당 노드와 연결된 노드들을 큐에 삽입한다.
         for i in graph[v]:
             if not visited[i]:
-                visited[i] = True
                 queue.append(i)
+                visited[i] == True
 
-bfs(graph, 1, visited)
+count = 0
+for i in range(9):
+    if not visited[i]:
+        bfs(graph, 0, visited)
+        count += 1 ## 개수를 세는 것이니 bfs 끝나면 개수 한개 증가,
+                    ## 나머지 visited[]에
+
+
+# def solution():
+
+
+
+
+
+
+
+
+
+
+
 
 
 
