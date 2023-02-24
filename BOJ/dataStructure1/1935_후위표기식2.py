@@ -1,34 +1,28 @@
-import sys
-
 n = int(input())
-quest = list(sys.stdin.readline().rstrip())
 
-num_stack = []
-for i in range(n):
-    num_stack.append(int(sys.stdin.readline().rstrip()))
+quest = list(str(input()))
 
-# 아마도 문제 포인트 --> ABC 순서랑 저장된 숫자 스택의 인덱스가 동일 하다.
+num_stack = [ int(input()) for _ in range(n)]
 
+stack = []
+for i in quest:
+    if i.isalpha():
+        number = ord(i) - ord('A')
+        stack.append(num_stack[number])
 
-cal_stack = []
-idx = 0
-for q in quest:
-    cal = ''
-    if q.isalpha():
-        cal_stack.append(str(num_stack[idx]))
-        if idx+1 < n:
-            idx += 1
     else:
-        b = cal_stack.pop()
-        a = cal_stack.pop()
-        cal = a+q+b
-        cal_stack.append(cal)
+        b = stack.pop()
+        a = stack.pop()
+        if i == "+":
+            stack.append(a+b)
 
-answer = eval(cal)
-print("{:.2f}".format(answer))
+        elif i == "-":
+            stack.append(a-b)
 
+        elif i == "*":
+            stack.append(a*b)
 
+        elif i == "/":
+            stack.append(a/b)
 
-
-
-
+print("%.2f" %stack[0])
