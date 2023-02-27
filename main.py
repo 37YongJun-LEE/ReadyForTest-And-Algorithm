@@ -21,61 +21,37 @@ if __name__ == '__main__':
 """ 이곳은 연습장 입니다. """
 #################################################################
 
+"""
+### (재귀적: 탑-다운 방식)   99부터 98, 97... 1, 0까지 하향식
+d = [0]*100
+
+start_time = time.time()
 
 
+def fibo(x):
+    if x == 0 or x == 1:
+        return 1
+    if d[x] != 0:
+        return d[x]
 
-# visited 는 필수
+    d[x] = fibo(x-1) + fibo(x-2)
+    return d[x]
 
-visited = [False] * 9       # 보면 알겠지만, visited는 현재 False가 9개인 방문기록 리스트이다.
-
-graph = [               # 그래프는 노드가 1이 가장 작으므로 인덱스까지 맞추기위해서 0에 빈배열 삽입
-    [],             #
-    [2,3,8],        # 1
-    [1,7],          # 2
-    [1,4,5],        # 3
-    [3,5],          # 4
-    [3,4],          # 5
-    [7],            # 6
-    [2,6,8],        # 7
-    [1,7]           # 8
-]
+print(fibo(99))
+"""
 
 
-# dfs의 기본이 뭐라고? 스택과 재귀함수
+## (반복적: 바텀-업 방식) 0부터 1,2,3... 99 차근차근 상향식
+d = [0]*100
 
+d[0] = 1
+d[1] = 1
 
-# bfs의 기본은 뭐? 큐가 전부다
+n = 99
 
-from collections import deque
-
-
-# def bfs():
-def bfs(graph, start, visited):
-    visited[start] == True
-    queue = deque([start])
-
-    while queue:
-        v = queue.popleft()
-        # 해당 노드와 연결된 노드들을 큐에 삽입한다.
-        for i in graph[v]:
-            if not visited[i]:
-                queue.append(i)
-                visited[i] == True
-
-count = 0
-for i in range(9):
-    if not visited[i]:
-        bfs(graph, 0, visited)
-        count += 1 ## 개수를 세는 것이니 bfs 끝나면 개수 한개 증가,
-                    ## 나머지 visited[]에
-
-
-# def solution():
-
-
-
-
-
+for i in range(3, n+1):
+    d[i] = d[i-1] + d[i-2]
+print(d[n])
 
 
 
