@@ -40,22 +40,35 @@ def fibo(x):
 print(fibo(99))
 """
 
-
-## (반복적: 바텀-업 방식) 0부터 1,2,3... 99 차근차근 상향식
-d = [0]*100
-
-d[0] = 1
-d[1] = 1
-
-n = 99
-
-for i in range(3, n+1):
-    d[i] = d[i-1] + d[i-2]
-print(d[n])
+from collections import deque
 
 
+def solution(progresses, speeds):
+    answer = []
+
+    progresses = deque(progresses)
+    speeds = deque(speeds)
+
+    print(speeds)
+    cnt = 0
+    while progresses:
+        for idx in range(len(progresses)):
+            progresses[idx] = progresses[idx] + speeds[idx]
+
+        while progresses:
+            if progresses[0] >= 100:
+                progresses.popleft()
+                speeds.popleft()
+                cnt += 1
+            else:
+                break
 
 
+        if cnt > 0:
+            answer.append(cnt)
+            cnt = 0
+
+    return answer
 
 
 
