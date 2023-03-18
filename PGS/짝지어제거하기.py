@@ -1,5 +1,4 @@
 def solution(s):
-    answer = -1
     cnt = 0
     maximum = len(s)
 
@@ -18,5 +17,3 @@ def solution(s):
         return 1
     else:
         return 0
-
-    return answer
