@@ -39,7 +39,7 @@ def fibo(x):
 
 print(fibo(99))
 """
-
+"""
 # 선택정렬
 array = [7,5,9,0,3,1,6,2,4,8]
 
@@ -82,15 +82,15 @@ def quick_sort(array):
 
     return quick_sort(left_side) + [pivot] + quick_sort(right_side)
 
-print('----')
-print(quick_sort(array))
+#print('----')
+#print(quick_sort(array))
 
-
+"""
 
 
 
 # 계수 정렬
-
+"""
 array = [7,5,9,0, 0,3,1, 1, 6,2,4,8]
 
 count = [0]*(max(array)+1)
@@ -101,4 +101,34 @@ for i in range(len(array)):
 for i in range(len(count)):
     for j in range(count[i]):
         print(i, end=' ')
+"""
+
+
+
+def bin_search(array, target, start, end): # start,end 는 인덱스
+    while start <= end:
+        mid = (start + end) // 2 # mid 는 인덱스
+
+        # target 찾은경우
+        if array[mid] == target:
+            return mid
+        elif array[mid] > target:       # [start ..target.. mid ..(target).. end]
+            end = mid - 1
+        else:
+            start = mid + 1
+    return None
+
+
+n, target = list(map(int, input().split()))
+
+array = list(map(int, input().split()))
+
+result = bin_search(array, target, 0, n-1)
+if result == None:
+    print('원소가 존재하지 않습니다')
+else:
+    print(result + 1)
+
+
+
 
