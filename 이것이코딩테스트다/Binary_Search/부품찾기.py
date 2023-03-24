@@ -23,9 +23,8 @@ for target in request:
         print('no', end=' ')
     else:
         print('yes', end=' ')
-
-
-"""task case
+"""
+task case
 5
 8 3 7 9 2
 3
