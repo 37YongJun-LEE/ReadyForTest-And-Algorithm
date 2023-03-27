@@ -11,18 +11,11 @@ def solution(citations):
 # 안좋은 풀이
 """
 def solution(citations):
-   
     answer = 0
-
-   
     citations.sort()
-   
     # print(citations)
     citations_list = []
-
-
     Max = citations[-1]
-
     for h in range(Max):  # h는 0부터 Max 까지 인용횟수 탐색
         cit_count = 0
         les_count = 0
@@ -33,11 +26,9 @@ def solution(citations):
             else:
                 les_count += 1
 
-
         if les_count <= h <= cit_count:
             citations_list.append(h)
 
     # print(citations_list)
-
     return citations_list[-1]
 """
