@@ -11,11 +11,15 @@ def solution(citations):
 # 안좋은 풀이
 """
 def solution(citations):
+   
     answer = 0
 
+   
     citations.sort()
+   
     # print(citations)
     citations_list = []
+
 
     Max = citations[-1]
 
@@ -28,6 +32,7 @@ def solution(citations):
                 cit_count += 1
             else:
                 les_count += 1
+
 
         if les_count <= h <= cit_count:
             citations_list.append(h)
