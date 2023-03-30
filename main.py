@@ -103,7 +103,7 @@ for i in range(len(count)):
         print(i, end=' ')
 """
 
-
+"""
 
 def bin_search(array, target, start, end): # start,end 는 인덱스
     while start <= end:
@@ -128,6 +128,21 @@ if result == None:
     print('원소가 존재하지 않습니다')
 else:
     print(result + 1)
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
