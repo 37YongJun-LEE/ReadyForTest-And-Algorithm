@@ -65,6 +65,7 @@ for c in range(case):
         dp.append( case[index:index+m] )
         index += m
 
+
     print(dp)
 
     for j in range(1, m):
