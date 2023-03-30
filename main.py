@@ -133,9 +133,52 @@ else:
 """
 
 
+"""
+# 금광 문제 => 2차원 배열로 입력 받는 것 부터가 고난 이다
+# 1차원으로 입력받고 다시 2차원으로 초기화 하여 2차원 배열의 dp를 구성해주자
+import sys
+case = int(input())
 
+for c in range(case):
+    n, m = map(int, input().split())
+    array = list(map(int, sys.stdin.readline().split()))
 
+    # 2차원 리스트 dp 초기화
+    dp = []
+    index = 0
 
+    for i in range(n): # n행인 이차원배열 만들것
+        dp.append(array[index:index+m]) # m열 필요
+        index += m
+
+    for j in range(1, m):
+        for i in range(n):
+            if i == 0:
+                left_up = 0
+            else:
+                left_up = dp[i-1][j-1]
+
+            left = dp[i][j-1]
+
+            if i == n-1:
+                left_down = 0
+            else:
+                left_down = dp[i+1][j-1]
+
+            dp[i][j] = dp[i][j] + max(left, left_down, left_up)
+
+    result = 0
+    for i in range(n):
+        result = max(result, dp[i][m-1])
+    print(result)"""
+"""
+2
+3 4 
+1 3 3 2 2 1 4 1 0 6 4 7
+4 4
+1 3 1 5 2 2 4 1 5 0 2 3 0 6 1 2
+
+"""
 
 
 
