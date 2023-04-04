@@ -1,8 +1,4 @@
-import sys
-
 num = list(map(int, input()))
-
-
 
 k = len(num)//2
 
