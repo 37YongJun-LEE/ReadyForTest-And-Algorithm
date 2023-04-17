@@ -9,6 +9,7 @@ for test_case in range(1, T + 1):
     cmd = list(input().split())
 
     for i in range(len(cmd)):
+        # 삽입
         if cmd[i] == 'I':
             input_loc = int(cmd[i + 1])
             N = int(cmd[i + 2])
