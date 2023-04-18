@@ -1,3 +1,20 @@
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    N = int(input())
+    mid = N//2
+    answer = 0
+    for i in range(N):
+        data = list(map(int, input()))
+        if i <= mid:
+            answer += sum(data[mid-i:mid+i+1])
+            #print(data[mid-i:mid+i+1])
+        else:
+            #print(data[i-mid:N-(i-mid)])
+            answer += sum(data[i-mid:N-(i-mid)])
+    print('#' + str(test_case), answer)
+
+"""
 
 T = int(input())
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
@@ -27,6 +44,9 @@ for test_case in range(1, T + 1):
 
     answer = up + middle + down
     print( '#' + str(test_case) , answer)
+"""
+
+
 
 
 """
