@@ -1,5 +1,7 @@
 def dfs(index, cnt, num_sum):
     global result
+    # 먼저 합 계산을 해주고 나서 ,다음 인덱스인 경우에 추가하지 않고 넘겨주는 방식으로 작성해야한다.
+    # 그래야 해당 인덱스을때 계산이 안되서 건너뛰어지는 경우가 발생하지 않는다.
     if cnt == 3:    # cnt 가 4인경우에 3개의 합이 저장되어있다.
         result.append(num_sum)
     if index == 7:
