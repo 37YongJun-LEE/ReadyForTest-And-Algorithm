@@ -181,8 +181,11 @@ for c in range(case):
 """
 
 
+N = 10
+print(int(N ** (1/2)))
 
 
+print(abs(3.14))
 
 
 
