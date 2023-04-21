@@ -8,15 +8,10 @@ def solution(clothes):
         except:
             gear_label[gear] = 1
     # print(gear_label)
-
     values = list(gear_label.values())
-
     for v in values:
         result = result * (v + 1)
-
     return result - 1
-
-
 
 """
 answer = 0
