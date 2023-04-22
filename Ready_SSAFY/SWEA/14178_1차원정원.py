@@ -9,8 +9,8 @@ for test_case in range(1, T + 1):
         continue
 
 
-    k = (N-1) // ((D*2) + 1)
-    if (N-1) % ((D*2) + 1) == 0:
+    k = (N) // ((D*2) + 1)
+    if (N) % ((D*2) + 1) == 0:
         print('#{} {}'.format(test_case, k))
     else:
         print('#{} {}'.format(test_case, k+1))
