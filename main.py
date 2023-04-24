@@ -181,11 +181,3 @@ for c in range(case):
 """
 
 
-
-
-num = list(map(int, input().split()))
-
-
-print(num)
-
-
