@@ -14,7 +14,6 @@ for test_case in range(1, T + 1):
             max_price = price_per_day[i]
             continue
         answer += max_price - price_per_day[i]
-
     print(answer)
 
 
