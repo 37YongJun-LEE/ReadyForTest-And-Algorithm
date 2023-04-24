@@ -181,3 +181,15 @@ for c in range(case):
 """
 
 
+N = int(input())
+for i in range(1, N + 1):
+    space = 0
+    for j in str(i):
+        if j == '3' or j == '6' or j == '9':
+            space += 1
+    if space == 0:
+        print(i, end = ' ')
+    else:
+        print('_' * space, end = ' ')
+
+
