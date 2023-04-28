@@ -1,15 +1,25 @@
+# 문제 핵심 : 계단수 판별을 어떻게 구현할 것인가? -> 알고있는게 좋다. 10으로 %, //, 나누어서 나머지가 1씩 감소하는 경우를 확인
+
 T = int(input())
+def check(x):
+    prev = x % 10
+    x = x // 10
+    while x > 0:
+        if x % 10 != prev - 1: return False
+        prev = x % 10
+        x = x // 10
+    return True
+
 for test_case in range(1, T + 1):
     N = int(input())
     data = list(map(int, input().split()))
-
-    combi = []
+    answer = 0
     for i in range(N):
         for j in range(i + 1, N):
-            combi.append(data[i] * data[j])
-
-    combi.sort()
-    print('#{} {}'.format(test_case, combi))
+            if check(data[i] * data[j]):
+                answer = max(answer, data[i] * data[j])
+    if answer == 0: answer = -1
+    print('#{} {}'.format(test_case, answer))
 
 
 
