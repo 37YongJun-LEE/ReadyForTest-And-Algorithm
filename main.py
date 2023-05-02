@@ -171,74 +171,60 @@ for c in range(case):
     for i in range(n):
         result = max(result, dp[i][m-1])
     print(result)"""
-"""
-2
-3 4 
-1 3 3 2 2 1 4 1 0 6 4 7
-4 4
-1 3 1 5 2 2 4 1 5 0 2 3 0 6 1 2
 
 """
+cnt = -1
+answer = 0
+def dfs(mother, word, speak, depth):
+    global cnt
+    global answer
+    cnt += 1
+    if speak == word:
+        #print(speak, cnt)
+        answer = cnt
+        return
+    if depth == 5:
+        return
+
+    dfs(mother, word, speak + mother[0], depth+1)
+    dfs(mother, word, speak + mother[1], depth+1)
+    dfs(mother, word, speak + mother[2], depth+1)
+    dfs(mother, word, speak + mother[3], depth+1)
+    dfs(mother, word, speak + mother[4], depth+1)
+
+    return
 
 
+def solution(word):
+    # 여기서 word 는 target이나 다름없다.
+    # aeiou 문자 리스트 만들기
+    mother = ['A', 'E', 'I', 'O', 'U']
 
-T = int(input())
-for test_case in range(1, T+1):
-    N, M = map(int, input().split())
-    A = list(map(int, input().split()))
-    B = list(map(int, input().split()))
+    # 길이는 최대 5글자인것을 명심 dfs로 조합을 순회한다. uuuuu까지 출력하는 함수만들기
+    # dfs(mother, target == word, idx)
+    # dfs(mother, word, idx)
 
-    answer = -100000
+    # for i in range(4):
+    dfs(mother, word, '', 0)
 
-    for i in range(N-M+1): # N-M 만큼 할것.
-        temp = 0
-        for a, b in zip(A[i:M+i], B[0:M]):
-            #print(a, b)
-            temp += a*b
-            #print(temp, end = ' ')
-        answer = max(answer, temp)
+    return answer
 
-    print('#{} {}'.format(test_case, answer))
-
-"""
-A[i:M+i]
-B[0:M]
-"""
-
-
-"""
-10
-6 2
--5 7 4 -9 2 1
--1 -7 
-10 2
-8 -2 -8 -6 -1 8 -6 0 1 3
--10 9 
-10 4
--9 7 9 9 -3 6 0 -7 0 -5
-3 -10 2 -8 
-9 3
-7 3 1 2 -6 9 1 0 0
-6 -5 -2 
-5 3
-10 -8 -4 9 -5
-8 -7 3 
-10 3
-8 -10 -10 -3 3 -10 -9 -9 7 -3
-6 3 9 
-8 5
-2 2 4 -8 -6 -9 7 8
-1 -2 9 -7 1 
-4 1
-3 -3 -4 6
--7 
-9 8
--9 -5 -7 2 -4 1 9 1 -8
--9 9 2 0 -1 8 -8 -5 
-2 2
-5 -5
--2 1
+print(solution('I'))
 
 """
 
 
+
+
+N = int(input())
+
+for i in range(1,N+1):
+    cnt = 0
+    for j in str(i):
+        if j == '3' or j == '6' or j == '9':
+            cnt += 1
+    if cnt > 0:
+        print('-' * cnt, end = '')
+    else:
+        print(i, end = '')
+    print(' ', end = '')
