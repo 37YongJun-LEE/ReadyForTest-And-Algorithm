@@ -1,16 +1,65 @@
+N = int(input())
+
+def dfs(row, visited):
+    print(row)
+    if row == N:
+        return N
+        exit()
+
+    for col in range(N):
+        if not visited[row][col]: continue
+
+        visited[row][col] = False
+        # 공격범위 처리
+        # 가로 세로
+        for i in range(N):
+            visited[row][i] = False
+            visited[i][col] = False
+
+        # 대각선
+        for i in range(N):
+            #print(i, N)
+            if 0 <= row - i < N and 0 <= col - i < N:
+                visited[row-i][col-i] = False
+            if 0 <= row + i < N and 0 <= col + i < N:
+                visited[row+i][col+i] = False
+            if 0 <= col - i < N and 0 <= row + i < N:
+                visited[row+i][col-i] = False
+            if 0 <= row - i < N and 0 <= col + i < N:
+                visited[row-i][col+i] = False
+
+        dfs(row+1, visited)
+        # 공격범위 제거
+        visited[row][col] = True
+
+        # 가로 세로  공격범위 제거
+        for i in range(N):
+            visited[row][i] = True
+            visited[i][col] = True
+
+        # 대각선  공격범위 제거
+        for i in range(N):
+            #print(i, N)
+            if 0 <= row - i < N and 0 <= col - i < N:
+                visited[row - i][col - i] = True
+            if 0 <= row + i < N and 0 <= col + i < N:
+                visited[row + i][col + i] = True
+            if 0 <= col - i < N and 0 <= row + i < N:
+                visited[row + i][col - i] = True
+            if 0 <= row - i < N and 0 <= col + i < N:
+                visited[row - i][col + i] = True
+        if row == N:
+            return True
+    return False
 
 
-"""month = {1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
+visited = [ [True] * N for _ in range(N)]
 
-start_month, start_day, now_month, now_day = map(int, input().split())
-the_day_before = 0
-if start_month == now_month:
-    the_day_before = (now_day - start_day) + 1
+#dfs(row, visited)
+if dfs(0, visited):
+    print(N)
 else:
-    for i in range(start_month, now_month+1):
-        if i == start_month: the_day_before += month[start_month] - start_day
-        elif i == now_month: the_day_before += now_day
-        else: the_day_before += month[i]
-    the_day_before += 1
-print(the_day_before)
-"""
+    print(False)
+
+for i in range(N):
+    print(visited[i])
