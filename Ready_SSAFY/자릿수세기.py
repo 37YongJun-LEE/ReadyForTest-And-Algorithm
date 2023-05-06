@@ -6,4 +6,4 @@ for test_case in range(1, T+1):
     for i in range(1, length):
         answer +=  i * ((10 ** i) - (10 ** (i-1)))
     answer += (N - 10 ** (length-1) + 1) * length
-    print(answer)
+    print('#{} {}'.format(test_case, answer))
