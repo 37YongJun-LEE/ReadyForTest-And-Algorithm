@@ -1,3 +1,54 @@
+"""
+# 90% 정답:-> 팰린드롬(대칭문자열) 문제는 이렇게 전부 구현해서 풀지 말고, 팰린드롬 함수를 이용한 풀이로 풀어나가자
+T = int(input())
+for test_case in range(1, T+1):
+    N = input()
+    length = len(N)
+    middle = length // 2
+    answer = 0
+
+    # 계산하기
+    # 짝수인 경우 : 완료
+    if length % 2 == 0:
+        #print('짝수')
+        #print(N[:middle], N[middle:])
+
+        front = N[:middle] # 앞 숫자 문자열
+        back = N[middle:] # 뒤 숫자 문자열
+
+        if int(front[::-1]) >= int(back): # 앞숫자를 뒤집은 것이 뒤숫자보다 큰 경우 -> 그냥 빼기
+            answer = int(front[::-1]) - int(back)
+        else: # 앞숫자가 작은경우 -> 앞숫자 + 1 한후 대칭을 만든수에서 원래 숫자를 뺴기
+            #answer = int(str(int(front) + 1) + str(int(front) + 1)[::-1]) - int(N)
+            answer = int(str(int(front[-1])+1) + str(int(front[::-1]) + 10**(middle-1))) - int(N[middle-1:])
+    # 홀수인 경우 :
+    else:
+        #print('홀수')
+        #print(N[:middle], N[middle+1:])
+
+        front = N[:middle]  # 앞 숫자 문자열
+        back = N[middle+1:]  # 뒤 숫자 문자열
+        if int(front[::-1]) >= int(back):
+            answer = int(front[::-1]) - int(back)
+        else:
+            answer = int(str(int(N[middle])+1) + front[::-1]) - int(N[middle:])
+
+    print('#{} {}'.format(test_case, answer))
+"""
+
+"""
+8
+84
+846803
+00
+6455
+777424
+002431
+11111
+014
+"""
+
+"""
 T = int(input())
 for test_case in range(1, T+1):
     N = input()
@@ -14,7 +65,7 @@ for test_case in range(1, T+1):
                     break
         else: # <= 뒤 수가 큰거나 같은 경우
             for i in range(int(N[0:(length//2 - 1)+1] + '0'*(length//2)) + 10**(length//2), int(N)+int(N)):
-                if str(i)[::-1] == str(i):
+   a             if str(i)[::-1] == str(i):
                     answer = i
                     break
 
@@ -31,9 +82,7 @@ for test_case in range(1, T+1):
                     answer = i
                     break
     print('#{} {}'.format(test_case, answer - int(N)))
-
-
-
+"""
 
 
 
@@ -161,4 +210,16 @@ for test_case in range(1, T+1):
 
     else: # 홀수인경우
         print('홀수')
+"""
+
+
+"""
+7
+84
+846803
+00
+6455
+777424
+002431
+11111
 """
