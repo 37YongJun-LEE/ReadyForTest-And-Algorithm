@@ -1,3 +1,76 @@
+T = int(input())
+for test_case in range(1, T+1):
+    number = list(map(int, list(input())))
+    length = len(number)
+    cnt = 0
+
+    while number != number[::-1]:
+        number[-1] += 1
+
+        for i in range(length-1, 0, -1):
+            if number[i] == 10:
+                number[i-1] += 1
+                number[i] -= 10
+        cnt += 1
+    print(cnt)
+
+
+"""
+def is_paline(number, s, e):
+    if s >= e: return True
+    else: return number[s] == number[e] and is_paline(number, s+1, e-1)
+
+T = int(input())
+for test_case in range(1, T+1):
+    number = list(map(int, list(input())))
+    length = len(number)
+    cnt = 0
+
+    while not is_paline(number, 0, length -1):
+        print(number)
+        number[length -1] += 1
+
+        for i in range(length-1, 0, -1):
+            if number[i] == 10:
+                number[i-1] += 1
+                number[i] -= 10
+        cnt += 1
+    print(cnt)
+
+"""
+
+
+"""
+# 팰린드롬(대칭문자열)인지 확인하는 함수
+def is_paline(number, s, e): # s, e 는 index
+    if s >= e: return True
+    else: return number[s] == number[e] and is_paline(number, s+1, e-1)
+    # return 이 and로 묶여있기 떄문에 왼쪽항이 거짓인 경우 False로 자동 리턴된다.
+
+T = int(input())
+for test_case in range(1, T + 1):
+    number = list(map(int, list(input())))
+    length = len(number)
+    cnt = 0
+
+    #print(is_paline(number, 0, length-1))
+
+
+    while not(is_paline(number, 0, length-1 )):
+        number[length-1] += 1
+        for i in range(length-1, 0, -1):
+            if number[i] == 10:
+                number[i-1] += 1
+                number[i] -= 10
+        cnt += 1
+
+    print('#{} {}'.format(test_case, cnt))
+
+"""
+
+
+
+
 """
 # 90% 정답:-> 팰린드롬(대칭문자열) 문제는 이렇게 전부 구현해서 풀지 말고, 팰린드롬 함수를 이용한 풀이로 풀어나가자
 T = int(input())
