@@ -15,6 +15,7 @@ for test_case in range(1, T+1):
         a[idx] = sum(a[idx-N:idx]) // N
         print(a[idx], end = ' ')
     print()
+
 """
 1
 3
