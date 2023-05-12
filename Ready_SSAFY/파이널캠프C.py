@@ -9,18 +9,16 @@ for test_case in range(1, T+1):
         start = i
 
 """
-
-
-
+"""
+v = []
+for _ in range(M): # 좌표 모두 v에 저장 입력
+    a, b = map(int, input().split())
+    v.append([a,b])
+"""
+"""
 T = int(input())
 for test_case in range(1, T+1):
     N, M = map(int, input().split())
-    """
-    v = []
-    for _ in range(M): # 좌표 모두 v에 저장 입력
-        a, b = map(int, input().split())
-        v.append([a,b])
-    """
     v = list( list(map(int, input().split())) for _ in range(M))
 
     # x 이동거리 최소, x 이동거리 최대
@@ -46,7 +44,7 @@ for test_case in range(1, T+1):
     if min_y == max_y:
         dy = 0
     print('#{} {}'.format(test_case, dx+dy))
-
+"""
 
 
 """
@@ -121,40 +119,38 @@ for test_case in range(1, T+1):
 
 
 
-"""
+
 ################### 2번문항 풀이
-망설임
+##### 망설임
 def check(x):
-visited = [False for i in range(n)]
-​
-visited[x] = True
-while True:
-idx = -1
-d = 10000000
-for i in range(n):
-if s[i] == 'o' and not visited[i]:
-if abs(i - x) < d:
-idx = i
-d = abs(i - x)
-elif abs(i - x) == d:
-return False
-​
-if idx == -1:
-break
-​
-x = idx
-visited[x] = True
-​
-return True
+    visited = [False for i in range(n)]
+    visited[x] = True
+    while True:
+        idx = -1
+        d = 10000000
+        for i in range(n):
+            if s[i] == 'o' and not visited[i]:
+                if abs(i - x) < d:
+                    idx = i
+                    d = abs(i - x)
+                elif abs(i - x) == d:
+                    return False
+
+        if idx == -1:
+            break
+    x = idx
+    visited[x] = True
+
+    return True
+
+
 T = int(input())
 for t in range(1, T + 1):
-n = int(input())
-s = input()
-​
-cnt = 0
-for i in range(n):
-if check(i):
-cnt += 1
-​
-print('#' + str(t) + ' ' + str(cnt))
-"""
+    n = int(input())
+    s = input()
+
+    cnt = 0
+    for i in range(n):
+        if check(i):
+            cnt += 1
+    print('#' + str(t) + ' ' + str(cnt))
