@@ -15,19 +15,37 @@ for test_case in range(1, T+1):
 T = int(input())
 for test_case in range(1, T+1):
     N, M = map(int, input().split())
+    """
     v = []
     for _ in range(M): # 좌표 모두 v에 저장 입력
         a, b = map(int, input().split())
         v.append([a,b])
+    """
+    v = list( list(map(int, input().split())) for _ in range(M))
 
     # x 이동거리 최소, x 이동거리 최대
-    min_x, max_x = 1, N
-    min_y, max_y = 1, N
+    min_x = N
+    max_x = 1
+    min_y = N
+    max_y = 1
 
-    # 위 아래 y
+    for i in v:
+        x = i[0]
+        y = i[1]
 
+        min_x = min(min_x, x)
+        max_x = max(max_x, x)
+        min_y = min(min_y, y)
+        max_y = max(max_y, y)
 
-    # 오른쪽 왼쪽 x
+    dx = min(max_x - 1, N - min_x)
+    dy = min(max_y - 1, N - min_y)
+
+    if min_x == max_x:
+        dx = 0
+    if min_y == max_y:
+        dy = 0
+    print('#{} {}'.format(test_case, dx+dy))
 
 
 
@@ -36,31 +54,33 @@ for test_case in range(1, T+1):
 마법사 유니의 체스판
 T = int(input())
 for t in range(1, T + 1):
-n, m = map(int, input().split())
-v = [list(map(int, input().split())) for i in range(m)]
-​
-mnx = n
-mxx = 1
-mny = n
-mxy = 1
-for i in v:
-x = i[0]
-y = i[1]
-​
-mnx = min(mnx, x)
-mxx = max(mxx, x)
-mny = min(mny, y)
-mxy = max(mxy, y)
-​
-dx = min(mxx - 1, n - mnx)
-dy = min(mxy - 1, n - mny)
-​
-if mnx == mxx:
-dx = 0
-if mny == mxy:
-dy = 0
-​
-print('#' + str(t) + ' ' + str(dx + dy))
+    n, m = map(int, input().split())
+    v = [list(map(int, input().split())) for i in range(m)]
+
+    mnx = n 
+    mxx = 1
+    mny = n
+    mxy = 1
+    
+    # v = [ [a,b] , [c,d] .... [x, y] ]
+    for i in v: 
+        x = i[0]
+        y = i[1]
+    
+        mnx = min(mnx, x)
+        mxx = max(mxx, x)
+        mny = min(mny, y)
+        mxy = max(mxy, y)
+    
+    dx = min(mxx - 1, n - mnx)
+    dy = min(mxy - 1, n - mny)
+    
+    if mnx == mxx:
+        dx = 0
+    if mny == mxy:
+        dy = 0
+    
+    print('#' + str(t) + ' ' + str(dx + dy))
 
 """
 
