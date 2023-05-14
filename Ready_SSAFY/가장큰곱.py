@@ -1,5 +1,42 @@
+def check(x):
+    prev = x % 10
+    x = x // 10
+    while x > 0:
+        if x % 10 != prev - 1 : return False
+        prev = x % 10
+        x = x // 10
+    return True
+
+T = int(input())
+for test_case in range(1, T + 1):
+    N = int(input())
+    data = list(map(int, input().split()))
+    flag = False
+    answer = 0
+    for a in range(N):
+        for b in range(a+1, N):
+            # 계단수 판별
+            if check(data[a]*data[b]):
+                answer = max(answer, data[a]*data[b])
+
+    if not answer: print('#{} {}'.format(test_case, -1))
+    else: print('#{} {}'.format(test_case, answer))
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 # 문제 핵심 : 계단수 판별을 어떻게 구현할 것인가? -> 알고있는게 좋다. 10으로 %, //, 나누어서 나머지가 1씩 감소하는 경우를 확인
 
+### 정답풀이
 T = int(input())
 def check(x):
     prev = x % 10
@@ -21,6 +58,7 @@ for test_case in range(1, T + 1):
     if answer == 0: answer = -1
     print('#{} {}'.format(test_case, answer))
 
+"""
 
 
 
