@@ -1,49 +1,56 @@
-from collections import deque
-
-def bfs(x, y, data, visited):
-    global tmp
-    tmp += data[x][y]
-    queue = deque()
-    queue.append([x, y])
-    visited[x][y] = True
-    dx = [-1, +1, -1, +1]
-    dy = [-1, +1, +1, -1]
-
-    while queue:
-        x1, y1 = queue.popleft()
-        tmp += data[x1][y1]
-        print(x1, y1)
-        for i in range(4):
-            if x1 + dx[i] < 0 or y1 + dy[i] < 0 or x1 + dx[i] >= N or y1 + dy[i] >= N:
-                continue
-            if not visited[x1 + dx[i]][y1 + dy[i]]:
-                queue.append( [x1 + dx[i], y1 + dy[i]] )
-                visited[x1 + dx[i]][y1 + dy[i]] = True
-
-
-
+############ 방법 2 : 대각선 합을 저장한 리스트 구현하기
 
 
 N, M = map(int, input().split())
-
 data = list( list(map(int, input().split())) for _ in range(N) )
 
-answer = 0
-tmp = 0
-visited = list( [False] * M for _ in range(N))
 
+left_sum = [0] * (200*200)
+right_sum = [0] * (200*200)
 
-"""
 for i in range(N):
     for j in range(M):
-        tmp = 0
-        dfs(i, j, data)
-        answer = max(answer, tmp)
-"""
+        left_sum[i + j] += data[i][j]
+        right_sum[i - j + 200] += data[i][j]
 
-bfs(3, 3, data, visited)
-
-print(tmp)
-
+answer = 0
 for i in range(N):
-    print(visited[i])
+    for j in range(M):
+        answer = max( answer, left_sum[i+j] + right_sum[i-j+200] - data[i][j] )
+print(answer)
+
+
+
+
+"""
+########## 방법 1
+
+dx = [1, 1, -1, -1]
+dy = [1, -1, 1, -1]
+
+def check(x, y):
+    sum = data[x][y]
+
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+
+        while True:
+            if nx < 0 or ny < 0 or nx >= N or ny >= N:
+                break
+            sum += data[nx][ny]
+            nx += dx[i]
+            ny += dy[i]
+
+    return sum
+
+
+N, M = map(int, input().split())
+data = list( list(map(int, input().split())) for _ in range(N) )
+answer = 0
+for i in range(N):
+    for j in range(M):
+        answer = max(answer, check(i, j))
+print(answer)
+
+"""
