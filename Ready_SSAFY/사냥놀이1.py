@@ -36,7 +36,7 @@ def check(x, y):
         ny = y + dy[i]
 
         while True:
-            if nx < 0 or ny < 0 or nx >= N or ny >= N:
+            if nx < 0 or ny < 0 or nx >= N or ny >= M:
                 break
             sum += data[nx][ny]
             nx += dx[i]
