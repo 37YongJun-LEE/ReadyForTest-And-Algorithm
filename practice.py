@@ -1,3 +1,38 @@
+T = int(input())
+for test_case in range(1, T + 1):
+    number = list( map(int, list(input())) )
+    l = len(number)
+    cnt = 0
+    while number[::-1] != number:
+        number[-1] += 1
+
+        for i in range(l-1, 0, -1):
+            if number[i] == 10:
+                number[i] = 0
+                number[i-1] += 1
+        cnt += 1
+    print('#{} {}'.format(test_case, cnt))
+
+
+"""T = int(input())
+for test_case in range(1, T + 1):
+    number = list( map(int, list(input())) )
+
+    print(number)
+    cnt= 0
+    while number[::-1] != number:
+        number[-1] += 1
+        for i in range(len(number)-1, 0, -1):
+            if number[i] == 10:
+                number[i] = 0
+                number[i-1] += 1
+        cnt += 1
+
+    print(cnt)
+
+"""
+
+
 """dx = [-1, +1, 0, 0] #행: 상 하 좌 우
 dy = [0, 0, -1, +1] # 열
 
