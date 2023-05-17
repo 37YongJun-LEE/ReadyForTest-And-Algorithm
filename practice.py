@@ -1,4 +1,22 @@
 T = int(input())
+for test_case in range(1, T+1):
+    N = int(input()) # 매년 N개 만큼 나누어줄수 있다.
+    now_candy = list(map(int, input().split()))
+
+    total = sum(now_candy)
+    cnt = 1
+    while total < N:
+        cnt += 1
+        total += 3 * total
+
+    print(cnt)
+
+
+
+
+
+
+"""T = int(input())
 for test_case in range(1, T + 1):
     number = list( map(int, list(input())) )
     l = len(number)
@@ -10,9 +28,9 @@ for test_case in range(1, T + 1):
             if number[i] == 10:
                 number[i] = 0
                 number[i-1] += 1
-        cnt += 1
+a        cnt += 1
     print('#{} {}'.format(test_case, cnt))
-
+"""
 
 """T = int(input())
 for test_case in range(1, T + 1):
