@@ -1,4 +1,74 @@
+
+"""from collections import deque
 T = int(input())
+for test_case in range(1, T+1):
+    N, M = map(int, input().split())
+    box = list( map(int, input().split()))
+    log = list( map(int, input().split()))
+
+    box.sort()
+    log.sort()
+    box = deque(box)
+    log = deque(log)
+
+    total = 0
+    cnt = 0
+    while box:
+        while log and box[0] > log[0]:
+            cnt += 1
+            log.popleft()
+        total += cnt
+        box.popleft()
+    print(total)
+"""
+
+
+"""from collections import deque
+
+T = int(input())
+for test_case in range(1, T+1):
+    N ,M = map(int, input().split())
+    box = list(map(int, input().split()))
+    log = list(map(int, input().split()))
+
+    box.sort()
+    log.sort()
+    box_queue = deque(box)
+    stock_queue = deque(log)
+
+    answer = 0
+    cnt =0
+    while box_queue:
+        while stock_queue and box_queue[0] > stock_queue[0]:
+            cnt += 1
+            stock_queue.popleft()
+        answer += cnt
+        box_queue.popleft()
+
+
+    print('#{} {}'.format(test_case, answer))"""
+
+
+"""T = int(input())
+for test_case in range(1, T+1):
+    data = list(map(int, input().split()))
+    flower = 0
+    while True:
+        cnt=0
+        flower += 1
+        for i in data:
+            if flower % i == 0:
+                cnt += 1
+        if cnt == 3:
+            break
+
+    print('#{} {}'.format(test_case, flower))
+"""
+
+
+
+
+"""T = int(input())
 for test_case in range(1, T+1):
     N = int(input()) # 매년 N개 만큼 나누어줄수 있다.
     now_candy = list(map(int, input().split()))
@@ -10,7 +80,7 @@ for test_case in range(1, T+1):
         total += 3 * total
 
     print(cnt)
-
+"""
 
 
 

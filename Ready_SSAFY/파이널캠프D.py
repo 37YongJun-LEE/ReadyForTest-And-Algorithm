@@ -77,3 +77,28 @@ for test_case in range(1, T+1):
     print('-------------------')
 
 """
+
+
+"""
+################ 2번 등급조작
+T = int(input())
+for test_case in range(1, T+ 1):
+    N = int(input())
+    score = [0]+list(map(int, input().split()))
+    now_sum = sum(score)
+    up_score = []
+    for i in range(N+1):
+        up_score.append(max(score[i] + i, i))
+    # 증가폭 데이터 따로 저장
+    data = []
+    for a, b in zip(score, up_score):
+        data.append(b-a)
+    data.sort(reverse= True)
+    cnt = 0
+    for i in data:
+        if now_sum >= 2 * N: break
+        now_sum += i
+        cnt += 1
+    print('#{} {}'.format(test_case, cnt))
+
+"""
