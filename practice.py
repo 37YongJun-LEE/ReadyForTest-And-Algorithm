@@ -1,4 +1,6 @@
-T = int(input())
+
+
+"""T = int(input())
 for test_case in range(1, T+1):
     N = int(input())
     data = list(map(int, input().split()))
@@ -9,7 +11,7 @@ for test_case in range(1, T+1):
         if sum + 1 < data[i]: break
         sum += data[i]
     print(sum+1)
-
+"""
 
 
 """N = int(input())
